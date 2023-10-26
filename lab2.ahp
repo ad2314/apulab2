@@ -1,0 +1,201 @@
+Version: 1.0
+#####################################
+# Alternatives Section
+Alternatives:
+  &alternatives
+  Canon EOS 5D Mark IV:
+    rozdzielczosc: 30.4
+    czulosc: 32000
+    cena: 2899
+    liczba_opinii: 81
+    jakosc: 7
+    styl: 8
+    ocena_klientow: 0
+    status_opinii: 50-100 opinii
+    obiektyw: tak
+  Nikon D850:
+    rozdzielczosc: 45.7
+    czulosc: 25600
+    cena: 3296
+    liczba_opinii: 56
+    jakosc: 5
+    styl: 5
+    ocena_klientow: 2
+    status_opinii: 50-100 opinii
+    obiektyw: tak
+  Sony Alpha a7 III:
+    rozdzielczosc: 24.2
+    czulosc: 51200
+    cena: 1998
+    liczba_opinii: 47
+    jakosc: 5
+    styl: 6
+    ocena_klientow: 0
+    status_opinii: mniej niż 50 opinii
+    obiektyw: tak
+  Fujifilm X-T3:
+    rozdzielczosc: 26.1
+    czulosc: 12800
+    cena: 1499
+    liczba_opinii: 30
+    jakosc: 6
+    styl: 5
+    ocena_klientow: 4
+    status_opinii: mniej niż 50 opinii
+    obiektyw: nie
+  Panasonic Lumix GH5:
+    rozdzielczosc: 20.3
+    czulosc: 25600
+    cena: 1497
+    liczba_opinii: 46
+    jakosc: 9
+    styl: 7
+    ocena_klientow: 4.5
+    status_opinii: mniej niż 50 opinii
+    obiektyw: tak
+  Nikon Z6:
+    rozdzielczosc: 24.5
+    czulosc: 51200
+    cena: 1996
+    liczba_opinii: 57
+    jakosc: 8
+    styl: 6
+    ocena_klientow: 1.5
+    status_opinii: 50-100 opinii
+    obiektyw: tak
+  Sony Alpha a6400:
+    rozdzielczosc: 24.2
+    czulosc: 32000
+    cena: 898
+    liczba_opinii: 39
+    jakosc: 7
+    styl: 8
+    ocena_klientow: 0.5
+    status_opinii: mniej niż 50 opinii
+    obiektyw: nie
+  Canon EOS R:
+    rozdzielczosc: 30.3
+    czulosc: 40000
+    cena: 2299
+    liczba_opinii: 23
+    jakosc: 9
+    styl: 9
+    ocena_klientow: 4.5
+    status_opinii: mniej niż 50 opinii
+    obiektyw: tak
+  Sony Alpha a7R III:
+    rozdzielczosc: 42.4
+    czulosc: 32000
+    cena: 2798
+    liczba_opinii: 40
+    jakosc: 9
+    styl: 9
+    ocena_klientow: 0
+    status_opinii: mniej niż 50 opinii
+    obiektyw: tak
+  Sony Alpha a7 II:
+    rozdzielczosc: 24.3
+    czulosc: 25600
+    cena: 1398
+    liczba_opinii: 46
+    jakosc: 8
+    styl: 7
+    ocena_klientow: 3.5
+    status_opinii: mniej niż 50 opinii
+    obiektyw: tak
+  Nikon Z7 II:
+    rozdzielczosc: 45.7
+    czulosc: 25600
+    cena: 2996
+    liczba_opinii: 36
+    jakosc: 9
+    styl: 8
+    ocena_klientow: 3
+    status_opinii: mniej niż 50 opinii
+    obiektyw: tak
+  Canon EOS 6D Mark II:
+    rozdzielczosc: 26.2
+    czulosc: 40000
+    cena: 1399
+    liczba_opinii: 42
+    jakosc: 7
+    styl: 7
+    ocena_klientow: 1.5
+    status_opinii: mniej niż 50 opinii
+    obiektyw: tak
+  Nikon D7500:
+    rozdzielczosc: 20.9
+    czulosc: 51200
+    cena: 996
+    liczba_opinii: 37
+    jakosc: 6
+    styl: 6
+    ocena_klientow: 4
+    status_opinii: mniej niż 50 opinii
+    obiektyw: tak
+  Sony Alpha a6600:
+    rozdzielczosc: 24.2
+    czulosc: 32000
+    cena: 1398
+    liczba_opinii: 29
+    jakosc: 6
+    styl: 7
+    ocena_klientow: 2
+    status_opinii: mniej niż 50 opinii
+    obiektyw: tak
+  Fujifilm X-T30:
+    rozdzielczosc: 26.1
+    czulosc: 12800
+    cena: 899
+    liczba_opinii: 31
+    jakosc: 6
+    styl: 5
+    ocena_klientow: 1.5
+    status_opinii: mniej niż 50 opinii
+    obiektyw: nie
+#End of Alternatives Section
+#####################################
+#Goal Section
+
+Goal:
+  name: Wybor aparatu
+  preferences:
+    - [Wydajnosc, Jakosc, 7]
+    - [Wydajnosc, Styl, 8]
+    - [Wydajnosc, Cena, 1/7]
+    - [Jakosc, Styl, 6]
+    - [Jakosc, Cena, 1/8]
+    - [Styl, Cena, 1/3]
+  children:
+    Wydajnosc:
+      preferences:
+        - [Rozdzielczosc, Czulosc, 9]
+        - [Rozdzielczosc, Obiektyw, 7]
+        - [Czulosc, Obiektyw, 5]
+      children:
+        Rozdzielczosc:
+          preferenceFunction:
+            function(a1, a2) min(9, max(1/9, a1$rozdzielczosc/a2$rozdzielczosc))
+          children: *alternatives
+        Czulosc:
+          preferenceFunction:
+            function(a1, a2) min(9, max(1/9, a1$czulosc/a2$czulosc))
+          children: *alternatives
+        Obiektyw:
+          preferenceFunction:
+            function(a1, a2) ifelse(a1$obiektyw == "Tak", 1, 9)
+          children: *alternatives
+    Jakosc:
+      preferenceFunction:
+        function(a1, a2) min(9, max(1/9, a1$jakosc/a2$jakosc))
+      children: *alternatives
+    Styl:
+      preferenceFunction:
+        function(a1, a2) min(9, max(1/9, a1$styl/a2$styl))
+      children: *alternatives
+    Cena:
+      preferenceFunction:
+        function(a1, a2) min(1/9, max(9, a1$cena/a2$cena))
+      children: *alternatives
+# End of Goal Section
+#####################################
